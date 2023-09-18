@@ -76,6 +76,13 @@ if __name__ == "__main__":
     plt.axis("equal")
     plt.legend()
 
+    # Save the x_pro-y_pro and x-y plots
+    plt.savefig("x_pro-y_pro and x-y plots.png")
+
+    # Save the x_pro-y_pro and x-y data in a csv file
+    df_pro = pd.DataFrame({"x_pro": x_pro, "y_pro": y_pro, "x_mm": x_mm, "y_mm": y_mm})
+    df_pro.to_csv("x_pro-y_pro and x-y data.csv", index=False, sep=",")
+
 
     ###
     # Compute the vehicle heading
@@ -96,3 +103,7 @@ if __name__ == "__main__":
     plt.grid(True)
     plt.show()
     plt.savefig("heading plot.png")
+
+    # Save the heading in a csv file
+    df_heading = pd.DataFrame({"time_s": time_s[:-1], "heading_deg": heading})
+    df_heading.to_csv("heading.csv", index=False, sep=",")
